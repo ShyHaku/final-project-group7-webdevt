@@ -5,29 +5,29 @@ export const Users = () => {
     return (
         <>
         <div className="m-5">
-            <h1 className="text-center mb-3">All Users</h1>
+            <h1 className="text-center mb-4">All Users</h1>
 
             <Table striped hover>
             <thead>
                 <tr>
-                <th>#</th>
+                <th>Username</th>
                 <th>Mobile Number</th>
                 <th>Email</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td>1</td>
+                <td>user1</td>
                 <td>0912 345 6789</td>
                 <td>abc@gmail.com</td>
                 </tr>
                 <tr>
-                <td>2</td>
+                <td>user2</td>
                 <td>0912 345 6789</td>
                 <td>abc@gmail.com</td>
                 </tr>
                 <tr>
-                <td>3</td>
+                <td>user3</td>
                 <td>0912 345 6789</td>
                 <td>abc@gmail.com</td>
                 </tr>

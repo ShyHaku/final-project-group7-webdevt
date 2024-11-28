@@ -4,7 +4,8 @@ import React from 'react';
 import { AdminNavi } from './admin/AdminNavi';
 import { AdminHome } from './admin/AdminHome';
 import { Users } from './admin/Users';
-import { AdminTrans } from './admin/Transactions';
+import { AdminTrans } from './admin/AdminTrans';
+import { CreateUser } from './admin/CreateUser';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route index element={<AdminHome />} />
         <Route path='users' element={<Users />} />
         <Route path='transactions' element={<AdminTrans />} />
+        <Route path='create' element={<CreateUser />} />
         </Route>
     </Routes>
     </BrowserRouter>
