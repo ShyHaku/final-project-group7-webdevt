@@ -9,6 +9,10 @@ import { DispUsers } from './admin/DispUsers';
 import { DeleteUser } from './admin/DeleteUser';
 import { EditUser } from './admin/EditUser';
 import { SearchUser } from './admin/SearchUser';
+import { AdminFilter } from './admin/AdminFilter';
+import { AdminFilterByDate } from './admin/AdminFilterByDate';
+import { AdFilterByRef } from './admin/AdFilterByRef';
+import { AdFilterByAmount } from './admin/AdFilterByAmount';
 
 
 function App() {
@@ -33,6 +37,10 @@ function App() {
         <Route path='delete' element={<DeleteUser users={users} setUsers={setUsers} />} />
         <Route path='edit' element={<EditUser users={users} setUsers={setUsers} />} />
         <Route path='search' element={<SearchUser users={users} />} />
+        <Route path='filter' element={<AdminFilter />} />
+        <Route path='filter/byDate' element={<AdminFilterByDate />} />
+        <Route path='filter/byRef' element={<AdFilterByRef />} />
+        <Route path='filter/byAmount' element={<AdFilterByAmount />} />        
         </Route>
     </Routes>
     </BrowserRouter>

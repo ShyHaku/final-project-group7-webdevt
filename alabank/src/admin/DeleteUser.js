@@ -58,7 +58,7 @@ export const DeleteUser = ({ users, setUsers }) => {
                                 />
                             </Form.Group>
 
-                            <Col xs="auto" className="my-1">
+                            <Col>
                                 <Button type="submit" variant="success">Delete</Button>
                             </Col>
                         </Row>

@@ -21,12 +21,12 @@ export const AdminTrans = () => {
             </thead>
             <tbody>
                 <tr>
-                <td>2024-11-26</td>
+                <td>11/30/2024, 9:01:00 PM</td>
                 <td>9685</td>
                 <td>user1</td>
-                <td>***1234</td>
+                <td>1234</td>
                 <td>user2</td>
-                <td>***5678</td>
+                <td>5678</td>
                 <td>20,000.00</td>
                 </tr>
             </tbody>

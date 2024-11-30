@@ -18,7 +18,7 @@ export const SearchUser = ({ users }) => {
             const foundUser = users.find((user) => user.username === searchUser);
             setFoundUser(foundUser);
 
-            if (!foundUser ) {
+            if (!foundUser) {
                 alert('User not found!');
             }
 
@@ -47,7 +47,7 @@ export const SearchUser = ({ users }) => {
                                 />
                             </Form.Group>
 
-                            <Col xs="auto" className="my-1">
+                            <Col>
                                 <Button type="submit" variant="success">Search</Button>
                             </Col>
                         </Row>
@@ -70,7 +70,7 @@ export const SearchUser = ({ users }) => {
                         <td>{foundUser.email}</td>
                         </tr>
                     </tbody>
-                    </Table>
+                </Table>
                 )}
             </div>
         </>

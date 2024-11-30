@@ -23,7 +23,7 @@ export const AdminNavi = () => {
             <Nav.Link href="#">New Accounts</Nav.Link>
             <Nav.Link href="#">Verify</Nav.Link>
             <Nav.Link as={Link} to="/transactions">All Transactions</Nav.Link>
-            <Nav.Link href="#">Filter</Nav.Link>
+            <Nav.Link as={Link} to="/filter">Filter</Nav.Link>
             <Nav.Link href="#">Messages</Nav.Link>
           </Nav>
         </Container>
