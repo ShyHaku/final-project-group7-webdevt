@@ -12,6 +12,7 @@ const NavigationBar = () => {
                 <Nav className="ml-auto">
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
                     <Nav.Link as={Link} to="/transaction">Transaction</Nav.Link>
+                    <Nav.Link as={Link} to="/contact">Contact us</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

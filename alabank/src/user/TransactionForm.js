@@ -1,11 +1,14 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const TransactionForm = ({ onTransfer, error, sender, setSender, recipient, setRecipient, amount, setAmount, handleGoBack }) => {
     const handleTransfer = (e) => {
         e.preventDefault();
         onTransfer(sender, recipient, amount);
     };
+    
+    const navigate = useNavigate();
 
     return (
         <Form onSubmit={handleTransfer} className="mt-4">
@@ -41,9 +44,9 @@ const TransactionForm = ({ onTransfer, error, sender, setSender, recipient, setR
             <Button variant="primary" type="submit" className="mt-3">
                 Transfer
             </Button>
-            <Button variant="secondary" onClick={handleGoBack} className="mt-3">
+            <Button variant="secondary" onClick={() => navigate('/transaction')}  className="mt-3">
                 Go Back
-            </Button> {/*not yet final*/}
+            </Button> 
         </Form>
     );
 };

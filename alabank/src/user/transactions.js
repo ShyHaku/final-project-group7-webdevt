@@ -1,129 +1,54 @@
 import React, { useState } from 'react';
-import { Container, Form, Button, ListGroup, Alert, Modal } from 'react-bootstrap';
+import { Container, Button, Alert, Modal, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'; 
 
 const TransactionPage = () => {
-    const [action, setAction] = useState('');
-    const [sender, setSender] = useState('');
-    const [recipient, setRecipient] = useState('');
-    const [amount, setAmount] = useState('');
-    const [transactions, setTransactions] = useState([]);
-    const [error, setError] = useState('');
     const [pin, setPin] = useState('');
     const [showPinModal, setShowPinModal] = useState(false);
-    const [correctPin] = useState('1234'); // Hardcoded PIN for demonstration
-    const [pinVerified, setPinVerified] = useState(false);
-    const navigate = useNavigate(); // Initialize navigate for navigation
-    
+    const [error, setError] = useState('');
+    const [correctPin] = useState('1234');
+    const navigate = useNavigate();
 
     const handleActionSelect = (selectedAction) => {
-        setAction(selectedAction);
-        setShowPinModal(true); // Not yet implemented
-    };
-
-    const handleTransfer = (e) => {
-        e.preventDefault();
-        setError('');
-
-        if (!sender || !recipient || !amount) {
-            setError("Please fill in all fields");
-            return;
+        if (selectedAction === 'history') {
+            setShowPinModal(true);
         }
-
-        if (isNaN(amount) || amount <= 0) {
-            setError("Amount must be a positive number");
-            return;
-        }
-
-        
-        const transaction = `Transferred ${amount} from ${sender} to ${recipient}`;
-        setTransactions([...transactions, transaction]);
-        setSender('');
-        setRecipient('');
-        setAmount('');
     };
 
     const handlePinSubmit = () => {
         if (pin === correctPin) {
             setShowPinModal(false);
-            setPinVerified(true); 
-            setPin('');
+            setPin(''); 
+            navigate('/transactionhistory');
         } else {
             setError("Incorrect PIN. Please try again.");
-            setPin(''); // Clear the PIN input
+            setPin('');
         }
     };
 
     const handleClosePinModal = () => {
         setShowPinModal(false);
-        setAction(''); // Reset when modal is closed
     };
 
     return (
         <Container className="text-center mt-5">
-            {!pinVerified ? (
-                <>
-                    <h2>Select Action</h2>
-                    <div className="mb-3">
-                        <Button variant="primary" onClick={() => navigate('/transactionform')} className="mx-2">
-                            Transfer Funds
-                        </Button>
-                        <Button variant="secondary" onClick={() => navigate('/transactionhistory')} className="mx-2">
-                            View Transaction History
-                        </Button>
-                    </div>
-                </>
-            ) : (
-                <>
-                    {action === 'transfer' && (
-                        <Form onSubmit={handleTransfer} className="mt-4">
-                            <Form.Group controlId="formSender">
-                                <Form.Label>Sender</Form.Label>
-                                <Form.Control 
-                                    type="text" 
-                                    value={sender} 
-                                    onChange={(e) => setSender(e.target.value)} 
-                                    placeholder="Enter sender's name" 
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="formRecipient" className="mt-3">
-                                <Form.Label>Recipient</Form.Label>
-                                <Form.Control 
-                                    type="text" 
-                                    value={recipient} 
-                                    onChange={(e) => setRecipient(e.target.value)} 
-                                    placeholder="Enter recipient's name" 
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="formAmount" className="mt-3">
-                                <Form.Label>Amount</Form.Label>
-                                <Form.Control 
-                                    type="number" 
-                                    value={amount} 
-                                    onChange={(e) => setAmount(e.target.value)} 
-                                    placeholder="Enter amount" 
-                                />
-                            </Form.Group>
-                            {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-                            <Button variant="primary" type="submit" className="mt-3">
-                                Transfer
-                            </Button>
-                        </Form>
-                    )}
-
-                    {action === 'history' && (
-                        <ListGroup className="mt-4">
-                            {transactions.length === 0 ? (
-                                <ListGroup.Item>No transactions found.</ListGroup.Item>
-                            ) : (
-                                transactions.map((transaction, index) => (
-                                    <ListGroup.Item key={index}>{transaction}</ListGroup.Item>
-                                ))
-                            )}
-                        </ListGroup>
-                    )}
-                </>
-            )}
+            <h2>Select Action</h2>
+            <div className="mb-3">
+                <Button 
+                    variant="primary" 
+                    onClick={() => navigate('/transactionform')}
+                    className="mx-2"
+                >
+                    Transfer Funds
+                </Button>
+                <Button 
+                    variant="secondary" 
+                    onClick={() => handleActionSelect('history')} 
+                    className="mx-2"
+                >
+                    View Transaction History
+                </Button>
+            </div>
 
             <Modal show={showPinModal} onHide={handleClosePinModal} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
