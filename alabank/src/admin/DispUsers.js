@@ -1,7 +1,12 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
 
-export const Users = () => {
+export const DispUsers = ({ users }) => {
+
+    if (users.length === 0) {
+        return <h3 className="text-center mt-5">No users to display</h3>;
+    }
+
     return (
         <>
         <div className="m-5">
@@ -16,21 +21,13 @@ export const Users = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>user1</td>
-                <td>0912 345 6789</td>
-                <td>abc@gmail.com</td>
+                {users.map((user) => (
+                <tr key={user.username}>
+                    <td>{user.username}</td>
+                    <td>{user.mobileNumber}</td>
+                    <td>{user.email}</td>
                 </tr>
-                <tr>
-                <td>user2</td>
-                <td>0912 345 6789</td>
-                <td>abc@gmail.com</td>
-                </tr>
-                <tr>
-                <td>user3</td>
-                <td>0912 345 6789</td>
-                <td>abc@gmail.com</td>
-                </tr>
+                ))}
             </tbody>
             </Table>
         </div>
