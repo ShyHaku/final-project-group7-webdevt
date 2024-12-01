@@ -1,54 +1,76 @@
-import React from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
 
-const TransactionForm = ({ onTransfer, error, sender, setSender, recipient, setRecipient, amount, setAmount, handleGoBack }) => {
-    const handleTransfer = (e) => {
-        e.preventDefault();
-        onTransfer(sender, recipient, amount);
-    };
-    
+const TransactionForm = ({ onEditTransfer, error, setError }) => {
     const navigate = useNavigate();
+    const [sender, setSender] = useState('');
+    const [recipient, setRecipient] = useState('');
+    const [amount, setAmount] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!sender || !recipient || !amount) {
+            setError('All fields are required.');
+            return;
+        }
+
+        if (parseFloat(amount) <= 0) {
+            setError('Amount must be a positive number.');
+            return;
+        }
+
+        const transferDetails = {
+            sender,
+            recipient,
+            amount: parseFloat(amount),
+        };
+
+        onEditTransfer(transferDetails);
+        
+        navigate('/transfer-confirmation');
+    };
 
     return (
-        <Form onSubmit={handleTransfer} className="mt-4">
+        <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formSender">
-                <Form.Label>Sender</Form.Label>
+                <Form.Label>Sender's Account Number</Form.Label>
                 <Form.Control 
-                    type="number" 
+                    type="text" 
+                    placeholder="Enter sender's account number" 
                     value={sender} 
                     onChange={(e) => setSender(e.target.value)} 
-                    placeholder="Enter sender's account number" 
                 />
             </Form.Group>
-            <Form.Group controlId="formRecipient" className="mt-3">
-                <Form.Label>Recipient</Form.Label>
+
+            <Form.Group controlId="formRecipient">
+                <Form.Label>Recipient's Account Number</Form.Label>
                 <Form.Control 
-                    type="number" 
+                    type="text" 
+                    placeholder="Enter recipient's account number" 
                     value={recipient} 
                     onChange={(e) => setRecipient(e.target.value)} 
-                    placeholder="Enter recipient's account number" 
-                />
-            </Form.Group>
-            <Form.Group controlId="formAmount" className="mt-3">
-                <Form.Label>Amount</Form.Label>
-                <Form.Control 
-                    type="number" 
-                    value={amount} 
-                    onChange={(e) => setAmount(e.target.value)} 
-                    placeholder="Enter amount" 
-                    min="0"
-                />
-            </Form.Group>
-            {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-            <Button variant="primary" type="submit" className="mt-3">
-                Transfer
-            </Button>
-            <Button variant="secondary" onClick={() => navigate('/transaction')}  className="mt-3">
-                Go Back
-            </Button> 
-        </Form>
-    );
-};
-
-export default TransactionForm;
+                    />
+                    </Form.Group>
+        
+                    <Form.Group controlId="formAmount">
+                        <Form.Label>Amount</Form.Label>
+                        <Form.Control 
+                            type="number" 
+                            placeholder="Enter amount" 
+                            value={amount} 
+                            onChange={(e) => setAmount(e.target.value)} 
+                        />
+                    </Form.Group>
+        
+                    {error && <p className="text-danger">{error}</p>}
+                    <br></br>
+                    <Button variant="primary" type="submit">
+                        Confirm Transfer
+                    </Button>
+                </Form>
+            );
+        };
+        
+        export default TransactionForm;

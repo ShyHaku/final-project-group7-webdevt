@@ -11,7 +11,6 @@ const TransactionHistory = ({ transactions }) => {
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                            
                             <th>Sender</th>
                             <th>Recipient</th>
                             <th>Amount</th>
@@ -21,10 +20,9 @@ const TransactionHistory = ({ transactions }) => {
                     <tbody>
                         {transactions.map((transaction, index) => (
                             <tr key={index}>
-                                
                                 <td>{transaction.sender}</td>
                                 <td>{transaction.recipient}</td>
-                                <td>${transaction.amount.toFixed(2)}</td>
+                                <td>₱{transaction.amount.toFixed(2)}</td>
                                 <td>{new Date(transaction.date).toLocaleString()}</td>
                             </tr>
                         ))}

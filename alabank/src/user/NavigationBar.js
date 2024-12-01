@@ -2,11 +2,12 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Bank } from 'react-bootstrap-icons';
 
 const NavigationBar = () => {
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand as={Link} to="/">Alabank</Navbar.Brand>
+        <Navbar className="custom-navbar" expand="lg">
+            <Navbar.Brand as={Link} to="/"><Bank/>{' '}Alabank</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">

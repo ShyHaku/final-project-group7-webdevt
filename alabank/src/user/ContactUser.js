@@ -62,6 +62,7 @@ const ContactPage = () => {
                         required
                     />
                 </Form.Group>
+                <br></br>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

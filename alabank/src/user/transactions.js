@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Button, Alert, Modal, Form } from 'react-bootstrap';
+import { Container, Button, Alert, Modal, Form, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'; 
+import { CashCoin, CardList } from 'react-bootstrap-icons';
 
 const TransactionPage = () => {
     const [pin, setPin] = useState('');
@@ -32,22 +33,40 @@ const TransactionPage = () => {
 
     return (
         <Container className="text-center mt-5">
-            <h2>Select Action</h2>
-            <div className="mb-3">
-                <Button 
-                    variant="primary" 
-                    onClick={() => navigate('/transactionform')}
-                    className="mx-2"
-                >
-                    Transfer Funds
-                </Button>
-                <Button 
-                    variant="secondary" 
-                    onClick={() => handleActionSelect('history')} 
-                    className="mx-2"
-                >
-                    View Transaction History
-                </Button>
+         
+            <p className="mb-4">Please choose one of the following actions to proceed:</p> {/* Temporary placeholder text */}
+            
+            <div className="d-flex justify-content-center">
+                <Card className="mx-2" style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>Transfer Funds</Card.Title>
+                        <br></br>
+                        <CashCoin className="large-coin" />
+                        <br></br>
+                        
+                        <Button 
+                            variant="primary" 
+                            onClick={() => navigate('/transactionform')}
+                        >
+                            Transfer Funds
+                        </Button>
+                    </Card.Body>
+                </Card>
+
+                <Card className="mx-2" style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>View Transaction History</Card.Title>
+                        <br></br>
+                        <CardList className="card-list-wrapper"/>
+                        <br></br>
+                        <Button 
+                            variant="primary" 
+                            onClick={() => handleActionSelect('history')}
+                        >
+                            View History
+                        </Button>
+                    </Card.Body>
+                </Card>
             </div>
 
             <Modal show={showPinModal} onHide={handleClosePinModal} backdrop="static" keyboard={false}>
