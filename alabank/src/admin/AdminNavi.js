@@ -32,3 +32,5 @@ export const AdminNavi = () => {
         </>
     )
 }
+
+export default AdminNavi; 
