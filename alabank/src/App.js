@@ -7,39 +7,69 @@ import TransactionHistory from './user/TransactionHistory';
 import ContactPage from './user/ContactUser'; 
 import TransactionForm from './user/TransactionForm';
 import TransferConfirmation from './user/TransferConfirmation';
-import './App.css'
+import Balance from './user/Balance'; // Import the Balance component
+import './App.css';
 
 const App = () => {
     const [transactions, setTransactions] = useState([]);
-    const [currentTransfer, setCurrentTransfer] = useState(null); // To hold current transfer details
+    const [currentTransfer, setCurrentTransfer] = useState(null);
     const [error, setError] = useState('');
+    const [balance, setBalance] = useState(30000);
 
-    const handleTransfer = (sender, recipient, amount) => {
+    
+    const handleTransfer = (sender, recipient, amount, recipientAccountNo) => {
         const newTransaction = {
             sender,
             recipient,
-            amount: parseFloat(amount),
+            amount: parseFloat(amount), // Ensure it's a valid number
             date: new Date().toISOString(),
+            referenceNo: Math.random().toString(36).substring(2, 15),
+            recipientAccountNo,
         };
 
         setTransactions([...transactions, newTransaction]);
-        setError(''); 
+        setError('');
     };
 
     const handleEditTransfer = (transfer) => {
         setCurrentTransfer(transfer);
     };
 
-    const handleConfirmTransfer = (sender, recipient, amount) => {
-        handleTransfer(sender, recipient, amount);
-        setCurrentTransfer(null); // Reset current transfer after confirming
+    const handleConfirmTransfer = (sender, recipient, amount, recipientAccountNo) => {
+        const parsedAmount = parseFloat(amount); 
+        
+        // Check if the balance is sufficient for the transfer
+        if (balance < parsedAmount) {
+            setError('Insufficient funds for this transfer.');
+            return;
+        }
+
+        // Proceed with the transaction
+        handleTransfer(sender, recipient, parsedAmount, recipientAccountNo);
+
+        // Update the balance correctly
+        setBalance((prevBalance) => {
+            const newBalance = prevBalance - parsedAmount;
+            return newBalance >= 0 ? newBalance : 0;
+        });
+
+        // Reset current transfer after a successful confirmation
+        setCurrentTransfer(null);
     };
 
     return (
         <Router>
             <NavigationBar />
             <Routes>
-                <Route path="/" element={<h1>Welcome to Alabank!</h1>} />
+                <Route 
+                    path="/" 
+                    element={ 
+                        <Balance 
+                            transactions={transactions} 
+                            defaultBalance={balance}
+                        />
+                    } 
+                />
                 <Route 
                     path="/transaction" 
                     element={<TransactionPage onTransfer={handleTransfer} error={error} setError={setError} />} 
@@ -51,6 +81,7 @@ const App = () => {
                             onEditTransfer={handleEditTransfer} 
                             error={error} 
                             setError={setError} 
+                            setCurrentTransfer={setCurrentTransfer} 
                         />} 
                 />
                 <Route 
@@ -64,9 +95,11 @@ const App = () => {
                         <TransferConfirmation 
                             initialTransfer={currentTransfer} 
                             onConfirm={handleConfirmTransfer} 
+                            balance={balance}
                         />
                     } 
                 />
+                <Route path="/balance" element={<Balance transactions={transactions} defaultBalance={balance} />} />
             </Routes>
         </Router>
     );

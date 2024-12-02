@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import { Container, Button, Alert, Modal, Form, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'; 
-import { CashCoin, CardList } from 'react-bootstrap-icons';
+import { CashCoin, CardList, Wallet } from 'react-bootstrap-icons';
 
 const TransactionPage = () => {
     const [pin, setPin] = useState('');
     const [showPinModal, setShowPinModal] = useState(false);
     const [error, setError] = useState('');
+    const [selectedAction, setSelectedAction] = useState(null); 
     const [correctPin] = useState('1234');
     const navigate = useNavigate();
 
     const handleActionSelect = (selectedAction) => {
-        if (selectedAction === 'history') {
-            setShowPinModal(true);
-        }
+        setSelectedAction(selectedAction); 
+        setShowPinModal(true); 
     };
 
     const handlePinSubmit = () => {
         if (pin === correctPin) {
             setShowPinModal(false);
             setPin(''); 
-            navigate('/transactionhistory');
+            if (selectedAction === 'history') {
+                navigate('/transactionhistory');
+            } else if (selectedAction === 'balance') {
+                navigate('/balance');
+            }
         } else {
             setError("Incorrect PIN. Please try again.");
             setPin('');
@@ -33,17 +37,16 @@ const TransactionPage = () => {
 
     return (
         <Container className="text-center mt-5">
-         
-            <p className="mb-4">Please choose one of the following actions to proceed:</p> {/* Temporary placeholder text */}
+            <p className="mb-4">Please choose one of the following actions to proceed:</p>
             
             <div className="d-flex justify-content-center">
+                {/* Transfer Funds Card */}
                 <Card className="mx-2" style={{ width: '18rem' }}>
                     <Card.Body>
                         <Card.Title>Transfer Funds</Card.Title>
                         <br></br>
                         <CashCoin className="large-coin" />
                         <br></br>
-                        
                         <Button 
                             variant="primary" 
                             onClick={() => navigate('/transactionform')}
@@ -53,6 +56,7 @@ const TransactionPage = () => {
                     </Card.Body>
                 </Card>
 
+                {/* View Transaction History Card */}
                 <Card className="mx-2" style={{ width: '18rem' }}>
                     <Card.Body>
                         <Card.Title>View Transaction History</Card.Title>
@@ -67,8 +71,25 @@ const TransactionPage = () => {
                         </Button>
                     </Card.Body>
                 </Card>
+
+                {/* Balance Card */}
+                <Card className="mx-2" style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>Check Balance</Card.Title>
+                        <br></br>
+                        <Wallet className="large-coin" />
+                        <br></br>
+                        <Button 
+                            variant="primary" 
+                            onClick={() => handleActionSelect('balance')}
+                        >
+                            Check Balance
+                        </Button>
+                    </Card.Body>
+                </Card>
             </div>
 
+            {/* PIN Modal */}
             <Modal show={showPinModal} onHide={handleClosePinModal} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Enter PIN</Modal.Title>
