@@ -9,9 +9,8 @@ import TransactionForm from './user/TransactionForm';
 import TransferConfirmation from './user/TransferConfirmation';
 import Balance from './user/Balance';
 import HomePage from './user/homepage';
-
 import { AdminNavi } from './admin/AdminNavi';
-import { AdminHome } from './admin/AdminHome';
+import { AdminHome } from './admin/adminHome';
 import { AdminTrans } from './admin/AdminTrans';
 import { CreateUser } from './admin/CreateUser';
 import { DispUsers } from './admin/DispUsers';
@@ -70,25 +69,8 @@ const App = () => {
         setCurrentTransfer(null);
     };
 
-    // Admin state
-    const [users, setUsers] = useState([
-        { username: "user1", mobileNumber: "09123456789", email: "user1@gmail.com" }
-    ]);
-
-    const [newUsersArr, setNewUsersArr] = useState([
-        { username: "user2", bankAccNo: "9876", mobileNumber: "09123456789", email: "user2@gmail.com", status: "Not Yet Verified" }
-    ]);
-
-    const [newBankArr, setNewBankArr] = useState([
-        { username: "juanDC", name: "Juan Dela Cruz", address: "Lipa City", mobileNumber: "09123456789", email: "juanDC@gmail.com", status: "Not Yet Verified" }
-    ]);
-
-    const [msgsArr, setMsgsArr] = useState([
-        { username: "user1", email: "user1@gmail.com", msg: "What are your customer support hours, and how can I reach you?" }
-    ]);
-
     return (
-        <Router>
+        <Router> {/* Make sure everything is wrapped in Router */}
             {/* User Routes */}
             <NavigationBar />
             <Routes>
@@ -106,20 +88,20 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<AdminNavi />}>
                     <Route path="admin" element={<AdminHome />} />
-                    <Route path="users" element={<DispUsers users={users} />} />
+                    <Route path="users" element={<DispUsers />} />
                     <Route path="transactions" element={<AdminTrans />} />
-                    <Route path="create" element={<CreateUser setUsers={setUsers} />} />
-                    <Route path="delete" element={<DeleteUser users={users} setUsers={setUsers} />} />
-                    <Route path="edit" element={<EditUser users={users} setUsers={setUsers} />} />
-                    <Route path="search" element={<SearchUser users={users} />} />
+                    <Route path="create" element={<CreateUser />} />
+                    <Route path="delete" element={<DeleteUser />} />
+                    <Route path="edit" element={<EditUser />} />
+                    <Route path="search" element={<SearchUser />} />
                     <Route path="filter" element={<AdminFilter />} />
                     <Route path="filter/byDate" element={<AdFilterByDate />} />
                     <Route path="filter/byRef" element={<AdFilterByRef />} />
                     <Route path="filter/byAmount" element={<AdFilterByAmount />} />
                     <Route path="new" element={<NewAccounts />} />
-                    <Route path="new/userAccounts" element={<NewUsers setUsers={setUsers} newUsersArr={newUsersArr} setNewUsersArr={setNewUsersArr} />} />
-                    <Route path="new/bankAccounts" element={<NewBankAcc newBankArr={newBankArr} setNewBankArr={setNewBankArr} />} />
-                    <Route path="messages" element={<AdminMsgs msgsArr={msgsArr} setMsgsArr={setMsgsArr} />} />
+                    <Route path="new/userAccounts" element={<NewUsers />} />
+                    <Route path="new/bankAccounts" element={<NewBankAcc />} />
+                    <Route path="messages" element={<AdminMsgs />} />
                 </Route>
             </Routes>
         </Router>
