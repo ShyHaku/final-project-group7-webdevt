@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 function UserRegistration() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [bankAccount, setBankAccount] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = () => {
@@ -13,7 +16,7 @@ function UserRegistration() {
     if (userExists) {
       alert('Username already exists. Please choose another.');
     } else {
-      const newUser = { username, password };
+      const newUser = { username, password, bankAccount, mobileNumber, email };
       localStorage.setItem('users', JSON.stringify([...storedUsers, newUser]));
       alert('Registration successful! Please log in.');
       navigate('/user-login');
@@ -36,6 +39,30 @@ function UserRegistration() {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        style={{ margin: '10px', padding: '10px', width: '80%' }}
+      />
+      <br />
+      <input
+        type="text"
+        placeholder="Last 4 Digits of Bank Account"
+        value={bankAccount}
+        onChange={(e) => setBankAccount(e.target.value)}
+        style={{ margin: '10px', padding: '10px', width: '80%' }}
+      />
+      <br />
+      <input
+        type="text"
+        placeholder="Mobile Number"
+        value={mobileNumber}
+        onChange={(e) => setMobileNumber(e.target.value)}
+        style={{ margin: '10px', padding: '10px', width: '80%' }}
+      />
+      <br />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         style={{ margin: '10px', padding: '10px', width: '80%' }}
       />
       <br />
