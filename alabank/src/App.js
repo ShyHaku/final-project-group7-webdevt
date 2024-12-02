@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import React, { useState } from 'react';
 import { AdminNavi } from './admin/AdminNavi';
-import { AdminHome } from './admin/AdminHome';
+import { AdminHome } from './admin/adminHome';
 import { AdminTrans } from './admin/AdminTrans';
 import { CreateUser } from './admin/CreateUser';
 import { DispUsers } from './admin/DispUsers';
@@ -61,7 +61,6 @@ const [msgsArr, setMsgsArr] = useState([
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />}>
           <Route path='/' element={<AdminNavi />}>
             <Route index element={<AdminHome />} />
             <Route path='users' element={<DispUsers users={users} />} />
@@ -82,7 +81,6 @@ const [msgsArr, setMsgsArr] = useState([
 
             <Route path='messages' element={<AdminMsgs msgsArr={msgsArr} setMsgsArr={setMsgsArr} />} />
           </Route>
-        </Route>
     </Routes>
     </BrowserRouter>
     </>
