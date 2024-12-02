@@ -6,3 +6,106 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.custom-navbar {
+  background-color: rgb(8, 17, 59) !important;
+  padding: 1rem;
+}
+
+.custom-navbar .nav-link {
+  color: white !important; 
+}
+
+.custom-navbar .navbar-brand {
+  color: white !important;
+}
+
+.custom-navbar .nav-link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.large-coin {
+  width: 100px;
+  height: 100px; 
+  margin-bottom: 20px; 
+}
+
+.card-list-wrapper {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.transfer-confirmation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.transfer-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.transfer-card .text-center {
+  text-align: center;
+}
+
+.transfer-card .mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.transfer-card .mt-3 {
+  margin-top: 1rem;
+}
+
+.transfer-card .w-48 {
+  width: 48%;
+}
+
+.transfer-card .w-100 {
+  width: 100%;
+}
+
+.transfer-card .d-flex {
+  display: flex;
+}
+
+.transfer-card .d-flex .justify-content-between {
+  justify-content: space-between;
+}
+
+.transfer-card .alert {
+  margin-bottom: 1rem;
+}
+
+.custom-edit-btn {
+  background-color: #237562;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.custom-edit-btn:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+.table-container {
+  margin: 20px;  
+}
+
+.transaction-title {
+  margin-bottom: 20px;  
+  padding-left: 10px;   
+  padding-right: 10px;  
+}
