@@ -7,11 +7,11 @@ import { Bank } from 'react-bootstrap-icons';
 const NavigationBar = () => {
     return (
         <Navbar className="custom-navbar" expand="lg">
-            <Navbar.Brand as={Link} to="/"><Bank/>{' '}Alabank</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/home"><Bank/>{' '}Alabank</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
+                    <Nav.Link as={Link} to="/home">Home</Nav.Link>
                     <Nav.Link as={Link} to="/transaction">Transaction</Nav.Link>
                     <Nav.Link as={Link} to="/contact">Contact us</Nav.Link>
                 </Nav>

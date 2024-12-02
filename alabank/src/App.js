@@ -7,7 +7,8 @@ import TransactionHistory from './user/TransactionHistory';
 import ContactPage from './user/ContactUser'; 
 import TransactionForm from './user/TransactionForm';
 import TransferConfirmation from './user/TransferConfirmation';
-import Balance from './user/Balance'; // Import the Balance component
+import Balance from './user/Balance';
+import HomePage from './user/homepage';
 import './App.css';
 
 const App = () => {
@@ -64,9 +65,7 @@ const App = () => {
                 <Route 
                     path="/" 
                     element={ 
-                        <Balance 
-                            transactions={transactions} 
-                            defaultBalance={balance}
+                        <HomePage
                         />
                     } 
                 />
@@ -100,6 +99,7 @@ const App = () => {
                     } 
                 />
                 <Route path="/balance" element={<Balance transactions={transactions} defaultBalance={balance} />} />
+                <Route path="/home" element={<HomePage/>}/>
             </Routes>
         </Router>
     );
