@@ -20,11 +20,10 @@ export const AdminNavi = () => {
             <Nav.Link as={Link} to="/delete">Delete</Nav.Link>
             <Nav.Link as={Link} to="/edit">Edit</Nav.Link>
             <Nav.Link as={Link} to="/search">Search</Nav.Link>
-            <Nav.Link href="#">New Accounts</Nav.Link>
-            <Nav.Link href="#">Verify</Nav.Link>
+            <Nav.Link as={Link} to="/new">New Accounts</Nav.Link>
             <Nav.Link as={Link} to="/transactions">All Transactions</Nav.Link>
             <Nav.Link as={Link} to="/filter">Filter</Nav.Link>
-            <Nav.Link href="#">Messages</Nav.Link>
+            <Nav.Link as={Link} to="/messages">Messages</Nav.Link>
           </Nav>
         </Container>
         </Navbar>
