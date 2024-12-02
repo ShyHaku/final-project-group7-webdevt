@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import './AdminStyle.css';
 
 export const AdminTrans = () => {
     return (

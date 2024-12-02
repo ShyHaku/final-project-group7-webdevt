@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import './AdminStyle.css';
 
 export const DeleteUser = ({ users, setUsers }) => {
     const [validated, setValidated] = useState(false);

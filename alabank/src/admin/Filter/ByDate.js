@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Form } from "react-bootstrap";
 
-export const AdminFilterByDate = () => {
+export const AdFilterByDate = () => {
 
     const [dateInput, setDateInput] = useState('');
     const [filteredTrans, setFilteredTrans] = useState([]);

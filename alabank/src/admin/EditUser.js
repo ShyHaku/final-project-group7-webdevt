@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
+import './AdminStyle.css';
 
 export const EditUser = ({ users, setUsers }) => {
 

@@ -6,24 +6,23 @@ import HomePage from './Pages/HomePage';
 import UserLogin from './Pages/UserLogin';
 import AdminLogin from './Pages/AdminLogin';
 import UserRegistration from './Pages/UserRegistration';
-import './styles.css';
 
-import { AdminNavi } from './admin/AdminNavi';
-import { AdminHome } from './admin/AdminHome';
-import { AdminTrans } from './admin/AdminTrans';
-import { CreateUser } from './admin/CreateUser';
-import { DispUsers } from './admin/DispUsers';
-import { DeleteUser } from './admin/DeleteUser';
-import { EditUser } from './admin/EditUser';
-import { SearchUser } from './admin/SearchUser';
-import { AdminFilter } from './admin/AdminFilter';
-import { NewAccounts } from './admin/NewAccounts';
-import { NewUsers } from './admin/new/NewUsers';
-import { AdFilterByAmount } from './admin/filter/ByAmount';
-import { AdFilterByRef } from './admin/filter/ByRef';
-import { AdFilterByDate } from './admin/filter/ByDate';
-import { NewBankAcc } from './admin/new/NewBankAcc';
-import { AdminMsgs } from './admin/AdminMsgs';
+import { AdminNavi } from './Admin/AdminNavi';
+import { AdminTrans } from './Admin/AdminTrans';
+import { CreateUser } from './Admin/CreateUser';
+import { DispUsers } from './Admin/DispUsers';
+import { DeleteUser } from './Admin/DeleteUser';
+import { EditUser } from './Admin/EditUser';
+import { SearchUser } from './Admin/SearchUser';
+import { AdminFilter } from './Admin/AdminFilter';
+import { NewAccounts } from './Admin/NewAccounts';
+import { NewUsers } from './Admin/New/NewUsers';
+import { AdFilterByAmount } from './Admin/Filter/ByAmount';
+import { AdFilterByRef } from './Admin/Filter/ByRef';
+import { AdFilterByDate } from './Admin/Filter/ByDate';
+import { NewBankAcc } from './Admin/New/NewBankAcc';
+import { AdminMsgs } from './Admin/AdminMsgs';
+import { AdminHome } from './Admin/AdminHome';
 
 function App() {
 
@@ -75,23 +74,23 @@ const [msgsArr, setMsgsArr] = useState([
 
             <Route path='admin' element={<AdminNavi />}>
               <Route index element={<AdminHome />} />
-              <Route path='admin/users' element={<DispUsers users={users} />} />
-              <Route path='admin/transactions' element={<AdminTrans />} />
-              <Route path='admin/create' element={<CreateUser setUsers={setUsers} />} />
-              <Route path='admin/delete' element={<DeleteUser users={users} setUsers={setUsers} />} />
-              <Route path='admin/edit' element={<EditUser users={users} setUsers={setUsers} />} />
-              <Route path='admin/search' element={<SearchUser users={users} />} />
+              <Route path='users' element={<DispUsers users={users} />} />
+              <Route path='transactions' element={<AdminTrans />} />
+              <Route path='create' element={<CreateUser setUsers={setUsers} />} />
+              <Route path='delete' element={<DeleteUser users={users} setUsers={setUsers} />} />
+              <Route path='edit' element={<EditUser users={users} setUsers={setUsers} />} />
+              <Route path='search' element={<SearchUser users={users} />} />
               
-              <Route path='admin/filter' element={<AdminFilter />} />
-              <Route path='admin/filter/byDate' element={<AdFilterByDate />} />
-              <Route path='admin/filter/byRef' element={<AdFilterByRef />} />
-              <Route path='admin/filter/byAmount' element={<AdFilterByAmount />} />   
+              <Route path='filter' element={<AdminFilter />} />
+              <Route path='filter/byDate' element={<AdFilterByDate />} />
+              <Route path='filter/byRef' element={<AdFilterByRef />} />
+              <Route path='filter/byAmount' element={<AdFilterByAmount />} />   
               
-              <Route path='admin/new' element={<NewAccounts />} />
-              <Route path='admin/new/userAccounts' element={<NewUsers setUsers={setUsers} newUsersArr={newUsersArr} setNewUsersArr={setNewUsersArr} />} />
-              <Route path='admin/new/bankAccounts' element={<NewBankAcc newBankArr={newBankArr} setNewBankArr={setNewBankArr} />} />
+              <Route path='new' element={<NewAccounts />} />
+              <Route path='new/userAccounts' element={<NewUsers setUsers={setUsers} newUsersArr={newUsersArr} setNewUsersArr={setNewUsersArr} />} />
+              <Route path='new/bankAccounts' element={<NewBankAcc newBankArr={newBankArr} setNewBankArr={setNewBankArr} />} />
 
-              <Route path='admin/messages' element={<AdminMsgs msgsArr={msgsArr} setMsgsArr={setMsgsArr} />} />
+              <Route path='messages' element={<AdminMsgs msgsArr={msgsArr} setMsgsArr={setMsgsArr} />} />
             </Route>
 
         </Route>

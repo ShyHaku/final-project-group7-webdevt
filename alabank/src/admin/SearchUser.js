@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table, Row, Button, Col, Form } from "react-bootstrap";
+import './AdminStyle.css';
 
 export const SearchUser = ({ users }) => {
 
