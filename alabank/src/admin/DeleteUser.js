@@ -68,3 +68,6 @@ export const DeleteUser = ({ users, setUsers }) => {
         </>
     )
 }
+
+
+export default DeleteUser;

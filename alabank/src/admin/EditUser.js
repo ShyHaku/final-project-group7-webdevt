@@ -91,3 +91,5 @@ export const EditUser = ({ users, setUsers }) => {
         </>
     )
 }
+
+export default EditUser;

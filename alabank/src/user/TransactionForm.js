@@ -70,12 +70,12 @@ const TransactionForm = ({ onEditTransfer, error, setError }) => {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center pt-3">
+        <Container className="d-flex justify-content-center align-items-center pt-5">
             <Row className="w-100">
                 <Col md={6} lg={5} className="mx-auto">
                     <h3 className="text-center mb-4">Transfer Details</h3>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formSender">
+                        <Form.Group controlId="formSender" className='mb-3'>
                             <Form.Label>Sender</Form.Label>
                             <Form.Control 
                                 type="text" 
@@ -85,7 +85,7 @@ const TransactionForm = ({ onEditTransfer, error, setError }) => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formSenderAccountNo">
+                        <Form.Group controlId="formSenderAccountNo" className='mb-3'>
                             <Form.Label>Sender Account No.</Form.Label>
                             <Form.Control 
                                 type="text" 
@@ -95,7 +95,7 @@ const TransactionForm = ({ onEditTransfer, error, setError }) => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formRecipient">
+                        <Form.Group controlId="formRecipient" className='mb-3'>
                             <Form.Label>Recipient</Form.Label>
                             <Form.Control 
                                 type="text" 
@@ -105,7 +105,7 @@ const TransactionForm = ({ onEditTransfer, error, setError }) => {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formRecipientAccountNo">
+                        <Form.Group controlId="formRecipientAccountNo" className='mb-3'>
                             <Form.Label>Recipient Account No.</Form.Label>
                             <Form.Control 
                                 type="text" 
@@ -115,7 +115,7 @@ const TransactionForm = ({ onEditTransfer, error, setError }) => {
                             />
                         </Form.Group>
                     
-                        <Form.Group controlId="formAmount">
+                        <Form.Group controlId="formAmount" className='mb-3'>
                             <Form.Label>Amount</Form.Label>
                             <Form.Control 
                                 type="number" 

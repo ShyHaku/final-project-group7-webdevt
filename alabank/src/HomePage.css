@@ -1,0 +1,58 @@
+.homepage {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .left-side {
+    flex: 1;
+    background-image: url('https://th.bing.com/th/id/OIP.cSag2YgKqYKR2LQTOQHVOAHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .left-side::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .right-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly off-white */
+  }
+  
+  .homepage-card {
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-dark {
+    color: #333;
+  }
+  
+  .btn {
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Button shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth shadow transition */
+  }
+  
+  .btn:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Shadow on hover for button */
+  }
+  

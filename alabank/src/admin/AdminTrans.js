@@ -35,3 +35,5 @@ export const AdminTrans = () => {
         </>
     )
 }
+
+export default AdminTrans;

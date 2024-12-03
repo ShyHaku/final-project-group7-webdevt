@@ -34,3 +34,6 @@ export const DispUsers = ({ users }) => {
         </>
     )
 }
+
+
+export default DispUsers;

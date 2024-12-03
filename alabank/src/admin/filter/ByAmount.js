@@ -80,3 +80,5 @@ export const AdFilterByAmount = () => {
         </>
     )
 }
+
+export default AdFilterByAmount;

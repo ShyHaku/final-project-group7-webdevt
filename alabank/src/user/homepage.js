@@ -16,7 +16,13 @@ const HomePage = () => {
     navigate('/transaction');
   };
 
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   return (
+    <>
+    
     <Container className="pt-5">
       <Row className="mb-4">
         <Col className="text-center">
@@ -49,7 +55,37 @@ const HomePage = () => {
           </Button>
         </Col>
       </Row>
+
+      {/* Logout Button */}
+      <Row className="justify-content-center mt-4">
+                    <Col xs="auto">
+                        <Button 
+                            variant="danger" 
+                            size="md" 
+                            onClick={handleLogout} 
+                        >
+                            Log Out
+                        </Button>
+                    </Col>
+                </Row>
     </Container>
+
+    <div className="footer">
+        <div className="content">
+          <h2>Get in Touch</h2>
+          <p>
+            <b>Address:</b> No. 40, Galle Road, Moratuwa, Alabang.
+          </p>
+          <p>
+            <b>Email:</b> Alabank@gmail.com
+          </p>
+          <p>
+            <b>Tel:</b> +94 71 485 1234
+          </p>
+          <p align="center">Alabank ©2024 Created by Group 7</p>
+        </div>
+      </div>
+    </>
   );
 };
 

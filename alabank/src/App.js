@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.js';
+import './App.css';
 import NavigationBar from './user/NavigationBar';
 import AdminNavi from './admin/AdminNavi';
 import TransactionPage from './user/transactions';
@@ -11,9 +11,11 @@ import TransactionForm from './user/TransactionForm';
 import TransferConfirmation from './user/TransferConfirmation';
 import Balance from './user/Balance';
 import HomePage from './user/homepage';
+import UserRegistration from './UserResgister.js';
+import HomePage2 from './MainHome.js';
 import { AdminHome } from './admin/adminHome';
 import { AdminTrans } from './admin/AdminTrans';
-import { CreateUser } from './admin/CreateUser';
+import CreateUser from './admin/CreateUser';
 import { DispUsers } from './admin/DispUsers';
 import { DeleteUser } from './admin/DeleteUser';
 import { EditUser } from './admin/EditUser';
@@ -25,7 +27,7 @@ import { AdFilterByAmount } from './admin/filter/ByAmount';
 import { AdFilterByRef } from './admin/filter/ByRef';
 import { AdFilterByDate } from './admin/filter/ByDate';
 import { NewBankAcc } from './admin/new/NewBankAcc';
-import { AdminMsgs } from './admin/AdminMsgs';
+import AdminMsgs from './admin/AdminMsgs';
 import LoginPage from './LoginPage';
 
 const App = () => {
@@ -72,11 +74,51 @@ const App = () => {
         setCurrentTransfer(null);
     };
 
+
+    const [users, setUsers] = useState([
+        {
+          username: "user1",
+          mobileNumber: "09123456789",
+          email: "user1@gmail.com"
+        }
+      ]);
+    
+      const [newUsersArr, setNewUsersArr] = useState([
+        {
+            username: "user2",
+            bankAccNo: "9876",
+            mobileNumber: "09123456789",
+            email: "user2@gmail.com",
+            status: "Not Yet Verified"
+        }
+    ]);
+    
+    const [newBankArr, setNewBankArr] = useState([
+      {
+          username: "juanDC",
+          name: "Juan Dela Cruz",
+          address: "Lipa City",
+          mobileNumber: "09123456789",
+          email: "juanDC@gmail.com",
+          status: "Not Yet Verified"
+      }
+    ]);
+    
+    const [msgsArr, setMsgsArr] = useState([
+      {
+          username: "user1",
+          email: "user1@gmail.com",
+          msg: "What are your customer support hours, and how can I reach you?"
+      }
+    ]);
+
     return (
         <Router>
             {/* Login Route */}
             <Routes>
-                <Route path="/" element={<LoginPage setUserRole={setUserRole} />} />
+                <Route path="/login" element={<LoginPage setUserRole={setUserRole} />} />
+                <Route path="/register" element={<UserRegistration />} />
+                <Route path="/" element={<HomePage2 />} />
             </Routes>
 
             {/* Conditionally Render Navbar based on userRole */}
@@ -100,21 +142,24 @@ const App = () => {
                 {/* Admin Routes */}
                 {userRole === 'admin' && (
                     <>
-                        <Route path="/admin" element={<AdminHome />} />
-                        <Route path="/admin/users" element={<DispUsers />} />
-                        <Route path="/admin/transactions" element={<AdminTrans />} />
-                        <Route path="/admin/create" element={<CreateUser />} />
-                        <Route path="/admin/delete" element={<DeleteUser />} />
-                        <Route path="/admin/edit" element={<EditUser />} />
-                        <Route path="/admin/search" element={<SearchUser />} />
-                        <Route path="/admin/filter" element={<AdminFilter />} />
-                        <Route path="/admin/filter/byDate" element={<AdFilterByDate />} />
-                        <Route path="/admin/filter/byRef" element={<AdFilterByRef />} />
-                        <Route path="/admin/filter/byAmount" element={<AdFilterByAmount />} />
-                        <Route path="/admin/new" element={<NewAccounts />} />
-                        <Route path="/admin/new/userAccounts" element={<NewUsers />} />
-                        <Route path="/admin/new/bankAccounts" element={<NewBankAcc />} />
-                        <Route path="/admin/messages" element={<AdminMsgs />} />
+                        <Route path='/admin' element={<AdminHome />} />
+            <Route path='/admin/users' element={<DispUsers users={users} />} />
+            <Route path='/admin/transactions' element={<AdminTrans />} />
+            <Route path='/admin/create' element={<CreateUser setUsers={setUsers} />} />
+            <Route path='/admin/delete' element={<DeleteUser users={users} setUsers={setUsers} />} />
+            <Route path='/admin/edit' element={<EditUser users={users} setUsers={setUsers} />} />
+            <Route path='/admin/search' element={<SearchUser users={users} />} />
+
+            <Route path='/admin/filter' element={<AdminFilter />} />
+            <Route path='/admin/filter/byDate' element={<AdFilterByDate />} />
+            <Route path='/admin/filter/byRef' element={<AdFilterByRef />} />
+            <Route path='/admin/filter/byAmount' element={<AdFilterByAmount />} />
+
+            <Route path='/admin/new' element={<NewAccounts />} />
+            <Route path='/admin/new/userAccounts' element={<NewUsers setUsers={setUsers} newUsersArr={newUsersArr} setNewUsersArr={setNewUsersArr} />} />
+            <Route path='/admin/new/bankAccounts' element={<NewBankAcc newBankArr={newBankArr} setNewBankArr={setNewBankArr} />} />
+
+            <Route path='/admin/messages' element={<AdminMsgs msgsArr={msgsArr} setMsgsArr={setMsgsArr} />} />
                     </>
                 )}
             </Routes>

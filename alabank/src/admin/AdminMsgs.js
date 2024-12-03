@@ -42,3 +42,6 @@ export const AdminMsgs = ({ msgsArr, setMsgsArr }) => {
         </>
     )
 }
+
+
+export default AdminMsgs;

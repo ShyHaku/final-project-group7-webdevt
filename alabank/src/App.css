@@ -7,6 +7,17 @@
   box-sizing: border-box;
 }
 
+.footer {
+  background-color: rgb(8, 17, 59);
+  height: 230px; 
+  color: white;
+  margin-top: 80px;
+  padding-left: 20px;
+  padding-top: 20px;
+
+  width: 100%;
+}
+
 .custom-navbar {
   background-color: rgb(8, 17, 59) !important;
   padding: 1rem;

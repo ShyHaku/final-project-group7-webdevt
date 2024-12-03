@@ -25,3 +25,5 @@ export const NewAccounts = () => {
         </>
     )
 }
+
+export default NewAccounts;

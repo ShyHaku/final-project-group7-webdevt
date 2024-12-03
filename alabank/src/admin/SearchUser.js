@@ -76,3 +76,5 @@ export const SearchUser = ({ users }) => {
         </>
     )
 }
+
+export default SearchUser;

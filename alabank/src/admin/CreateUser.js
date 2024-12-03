@@ -92,3 +92,5 @@ export const CreateUser = ({ setUsers }) => {
         </>
     )
 }
+
+export default CreateUser;
